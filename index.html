@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="scoreboard">
+        <div class = "t1">ROCK PAPER SCISSORS</div>
+        <div class = "t2">
+            <div class = "cmpscore" id="computerScore">COMPUTER SCORE: <h3 id="comScore">0</h3></div>
+            <div class = "urscore" id="yourScore">YOUR<br> SCORE: <h3 id="yscore">0</h3></div>
+        </div>
+        
+    </div>
+    <div class="userselection">
+        <div id="rock" class="choicerock" data-choice="rock">
+            <img class="rock" src="./rock.svg" />
+        </div>
+        <div class="line1"></div>
+        <div id="scissor" class="choicescissor" data-choice="scissors">
+            <img class="scissor" src="./scissors.svg"/>
+        </div>
+        <div id="paper" class="choicepaper" data-choice="paper">
+            <img class="paper" src="./paper.svg"/>
+        </div>
+        
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+ 
+    <div id="rulespopup" class="rulespopup">
+        
+        <button class="closeButton">X</button>
+        <h5>Game Rules</h5>
+        <ul>
+            <li><span>Rock beats scissors, scissors beat paper, and paper beats rock.</span></li><br>
+            <li><span>Agree ahead of time whether you'll count off "rock, paper, scissors, shoot" or just "rock, paper, scissors."</span></li><br>
+            <li><span>Use rock, paper, scissors to settle mnor decisions or simply play to pass the time</span></li><br>
+            <li><span>If bothe players lay down ithe same hand, each player lays down another</span></li><br>
+        </ul>
+    </div>
+    <div>
+        <button id="rulesButton" class="rules" onclick="toggleRules()">RULES</button>  
+    </div>
+    
+    
+    <div class="pcwin_r">
+        <div class="user-choice">
+            <h6 class="h6">YOU PICKED</h6>
+            <img class="scissor" src="./scissors.svg" />
+        </div>
+        <div class="middle">
+            <h5 class="middle1">YOU LOST</h5>
+            <h5 class="pc">AGAINST PC</h5>
+            <button class="replay">PLAY AGAIN</button>
+        </div>
+        <div class="computer-choice">
+            <h6 class="h6">PC PICKED</h6>
+            <div class="circle3">
+                <div class="circle2">
+                    <div class="circle1">
+                        <img class="rock" src="./rock.svg"  />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pcwin_s">
+        <div class="user-choice">
+            <h6 class="h6">YOU PICKED</h6>
+            <img class="paper" src="./paper.svg" />
+        </div>
+        <div class="middle">
+            <h5 class="middle1">YOU LOST</h5>
+            <h5 class="pc">AGAINST PC</h5>
+            <button class="replay">PLAY AGAIN</button>
+        </div>
+        <div class="computer-choice">
+            <h6 class="h6">PC PICKED</h6>
+            <div class="circle3">
+                <div class="circle2">
+                    <div class="circle1">
+                        <img class="scissor" src="./scissors.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <
+    <div class="pcwin_p">
+        <div class="user-choice">
+            <h6 class="h6">YOU PICKED</h6>
+            <img class="rock" src="./rock.svg" />
+        </div>
+        <div class="middle">
+            <h5 class="middle1">YOU LOST</h5>
+            <h5 class="pc">AGAINST PC</h5>
+            <button class="replay">PLAY AGAIN</button>
+        </div>
+        <div class="computer-choice">
+            <h6 class="h6">PC PICKED</h6>
+            <div class="circle3">
+                <div class="circle2">
+                    <div class="circle1">
+                        <img class="paper" src="./paper.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="userwin_r">
+        <div class="user-choice">
+            <h6 class="h6">YOU PICKED</h6>
+            <div class="circle3">
+                <div class="circle2">
+                    <div class="circle1">
+                        <img class="rock" src="./rock.svg"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <h5 class="middle1">YOU WIN</h5>
+            <h5 class="pc">AGAINST PC</h5>
+            <button class="replay">PLAY AGAIN</button>
+        </div>
+        <div class="computer-choice">
+            <h6 class="h6">PC PICKED</h6>
+            <img class="scissor" src="./scissors.svg" />
+        </div>
+        <div>
+            <button class="next">NEXT</button>
+        </div>
+    </div>
+    <div class="userwin_s">
+        <div class="user-choice">
+            <h6 class="h6">YOU PICKED</h6>
+            <div class="circle3">
+                <div class="circle2">
+                    <div class="circle1">
+                        <img class="scissor" src="./scissors.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <h5 class="middle1">YOU WIN</h5>
+            <h5 class="pc">AGAINST PC</h5>
+            <button class="replay">PLAY AGAIN</button>
+        </div>
+        <div class="computer-choice">
+            <h6 class="h6">PC PICKED</h6>
+            <img class="paper" src="./paper.svg"  />
+        </div>
+        <div>
+            <button class="next">NEXT</button>
+        </div>
+    </div>
+    <div class="userwin_p">
+        <div class="user-choice">
+            <h6 class="h6">YOU PICKED</h6>
+            <div class="circle3">
+                <div class="circle2">
+                    <div class="circle1">
+                        <img class="paper" src="./paper.svg"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <h5 class="middle1">YOU WIN</h5>
+            <h5 class="pc">AGAINST PC</h5>
+            <button class="replay">PLAY AGAIN</button>
+        </div>
+        <div class="computer-choice">
+            <h6 class="h6">PC PICKED</h6>
+            <img class="rock" src="./rock.svg"/>
+        </div>
+        <div>
+            <button class="next">NEXT</button>
+        </div>
+    </div>
+    <div class="tieRock">
+        <div class="user-choice">
+            <h6>YOU PICKED</h6>
+            <img class="rock" src="./rock.svg"/>
+        </div>
+        <div>
+            <h5 class="middle1">TIE UP</h5>
+            <button class="replay">REPLAY</button>
+        </div>
+        <div class="computer-choice">
+            <h6>PC PICKED</h6>
+            <img class="rock" src="./rock.svg" />
+        </div>
+    </div>
+    <div class="tieScissor">
+        <div class="user-choice">
+            <h6>YOU PICKED</h6>
+            <img class="scissor" src="./scissors.svg" />
+        </div>
+        <div>
+            <h5 class="middle1">TIE UP</h5>
+            <button class="replay">REPLAY</button>
+        </div>
+        <div class="computer-choice">
+            <h6>PC PICKED</h6>
+            <img class="scissor" src="./scissors.svg" />
+        </div>
+    </div>
+    <div class="tiePaper">
+        <div class="user-choice">
+            <h6>YOU PICKED</h6>
+            <img class="paper" src="./paper.svg"/>
+        </div>
+        <div>
+            <h5 class="middle1">TIE UP</h5>
+            <button class="replay">REPLAY</button>
+        </div>
+        <div class="computer-choice">
+            <h6>PC PICKED</h6>
+            <img class="paper" src="./paper.svg" />
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

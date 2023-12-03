@@ -5,19 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const UserSelection = document.querySelector(".userselection");
     const userscore = document.getElementById("yscore");
     const pcscore = document.getElementById("comScore");
-    const tieRockDiv = document.querySelector(".tieRock");
-    const tieScissorDiv = document.querySelector(".tieScissor");
-    const tiePaperDiv = document.querySelector(".tiePaper");
     const pcwin_s = document.querySelector(".pcwin_s");
     const pcwin_r = document.querySelector(".pcwin_r");
     const pcwin_p = document.querySelector(".pcwin_p");
-    const replayButtons = document.querySelectorAll(".replay");
+    const resetgame = document.querySelectorAll(".replay");
     const userwin_r = document.querySelector(".userwin_r");
     const userwin_s = document.querySelector(".userwin_s");
     const userwin_p = document.querySelector(".userwin_p");
-    const rockNextButton = document.querySelector(".userwin_r .next");
-    const paperNextButton = document.querySelector(".userwin_s .next");
-    const scissorsNextButton = document.querySelector(".userwin_p .next");
+    
 
     let playerScore = parseInt(localStorage.getItem("playerScore")) || 0;
     let computerScore = parseInt(localStorage.getItem("computerScore")) || 0;
@@ -35,24 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function hideGameRules() {
         gameRules.classList.remove("show");
     }
-    
-    if (rockNextButton) {
-        rockNextButton.addEventListener("click", function () {
-            window.location.href = "Hurray.html";
-        });
-    }
+    const nextButtons = document.querySelectorAll(".userwin_r .next,.userwin_s .next, .userwin_p .next");
+    nextButtons.forEach(button => button.addEventListener("click",()=> redirectToHurray()));
 
-    if (paperNextButton) {
-        paperNextButton.addEventListener("click", function () {
-            window.location.href = "Hurray.html";
-        });
+    function redirectToHurray() {
+        window.location.href = "Hurray.html";
     }
-
-    if (scissorsNextButton) {
-        scissorsNextButton.addEventListener("click", function () {
-            window.location.href = "Hurray.html";
-        });
-    }
+   
+    resetgame.forEach(button => button.addEventListener("click", resetGame));
 
     const playerChoices = document.querySelectorAll(".choicerock, .choicescissor, .choicepaper");
     playerChoices.forEach(choice => choice.addEventListener("click", () => handlePlayerChoice(choice)));
@@ -104,21 +89,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateResultsDisplay(playerChoice, computerChoice, winner) {
         UserSelection.style.display = "none";
-        
-        tieRockDiv.style.display = "none";
-        tieScissorDiv.style.display = "none";
-        tiePaperDiv.style.display = "none";
-        pcwin_s.style.display = "none";
-        pcwin_r.style.display = "none";
-        pcwin_p.style.display = "none";
+        document.querySelectorAll(".tieRock, .tieScissor, .tiePaper, .pcwin_s, .pcwin_r, .pcwin_p, .userwin_r, .userwin_s, .userwin_p")
+            .forEach(element => element.style.display = "none");
+       
+    const TieRock = document.querySelector(".tieRock");
+    const TieScissor = document.querySelector(".tieScissor");
+    const TiePaper = document.querySelector(".tiePaper");
 
         if (winner === "tie") {
             if (playerChoice === "rock") {
-                tieRockDiv.style.display = "flex";
+                TieRock.style.display = "flex";
             } else if (playerChoice === "scissors") {
-                tieScissorDiv.style.display = "flex";
+                TieScissor.style.display = "flex";
             } else if (playerChoice === "paper") {
-                tiePaperDiv.style.display = "flex";
+                TiePaper.style.display = "flex";
             }
         } else if (winner === "player") {
             showYouWinSection(playerChoice, computerChoice);
@@ -129,9 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showComputerWinSection(playerChoice, computerChoice) {
         UserSelection.style.display = "none";
-        tieRockDiv.style.display = "none";
-        tieScissorDiv.style.display = "none";
-        tiePaperDiv.style.display = "none";
+        document.querySelectorAll(".tieRock, .tieScissor, .tiePaper")
+            .forEach(element => element.style.display = "none");
+        
 
         if (playerChoice === "paper" && computerChoice === "scissors") {
             pcwin_s.style.display = "flex";
@@ -143,9 +127,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     function showYouWinSection(playerChoice, computerChoice) {
         UserSelection.style.display = "none";
-        tieRockDiv.style.display = "none";
-        tieScissorDiv.style.display = "none";
-        tiePaperDiv.style.display = "none";
+        document.querySelectorAll(".tieRock, .tieScissor, .tiePaper")
+            .forEach(element => element.style.display = "none");
+    
 
         if (playerChoice === "rock" && computerChoice === "scissors") {
             userwin_r.style.display = "flex";
@@ -163,19 +147,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    replayButtons.forEach(button => {
-        button.addEventListener("click", function () {
+    function resetGame() {
             UserSelection.style.display = "flex";
-            tieRockDiv.style.display = "none";
-            tieScissorDiv.style.display = "none";
-            tiePaperDiv.style.display = "none";
-            pcwin_s.style.display = "none";
-            pcwin_r.style.display = "none";
-            pcwin_p.style.display = "none";
-            userwin_r.style.display = "none";
-            userwin_s.style.display = "none";
-            userwin_p.style.display = "none";
+            document.querySelectorAll(".tieRock, .tieScissor, .tiePaper, .pcwin_s, .pcwin_r, .pcwin_p, .userwin_r, .userwin_s, .userwin_p")
+            .forEach(element => element.style.display = "none");
+          
             RulesButton.classList.remove("rules-shifted");
-        });
-    });
+        };
+    
 });
